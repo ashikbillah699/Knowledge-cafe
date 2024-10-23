@@ -1,5 +1,5 @@
 
-const Blog = ({ blog, handleAddToBookMarks }) => {
+const Blog = ({ blog, handleAddToBookMarks, handleMarkAsRead }) => {
     const { author, author_img, cover, hashtags, posted_data, reading_time, title,} = blog;
     return (
         <div className="mb-20">
@@ -26,7 +26,7 @@ const Blog = ({ blog, handleAddToBookMarks }) => {
                         hashtags.map((hash, idx) => <small key={idx} className="font-semibold text-[#858282]"> {hash} </small>)
                     }
                 </div>
-                <a className="text-lg font-semibold text-[#6047EC]" href="#">Mark as read</a>
+                <a onClick={()=> handleMarkAsRead(reading_time)} className="text-lg font-semibold text-[#6047EC]" href="#">Mark as read</a> 
             </div>
         </div>
     );

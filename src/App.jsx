@@ -7,10 +7,17 @@ import Header from './component/header/Header'
 
 function App() {
 const [bookMarks, setBookMarks] = useState([]);
+const [markAsRead, setmarkAsRead] = useState(0);
 
 const handleAddToBookMarks = blog =>{
   const newBookMarks = [...bookMarks, blog]
   setBookMarks(newBookMarks);
+}
+
+const handleMarkAsRead = time => {
+  const convartTime = parseInt(time);
+  const convartNum = parseInt(markAsRead)
+  setmarkAsRead(convartNum + convartTime);
 }
 
   return (
@@ -18,8 +25,14 @@ const handleAddToBookMarks = blog =>{
       <Header></Header>
       <main>
         <section className='flex gap-9'>
-          <Blogs handleAddToBookMarks={handleAddToBookMarks}></Blogs>
-          <Bookmarks bookMarks={bookMarks}></Bookmarks>
+          <Blogs 
+           handleAddToBookMarks={handleAddToBookMarks}
+           handleMarkAsRead={handleMarkAsRead}
+           ></Blogs>
+          <Bookmarks
+          bookMarks={bookMarks}
+          markAsRead={markAsRead}
+          ></Bookmarks>
         </section>
       </main>
     </>
